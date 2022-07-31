@@ -1,11 +1,11 @@
-# Tutorial for an FSI simulation of an elastic flap perpendicular to a channel flow
+# Tutorial for an FSI simulation of an elastic-shell flap alomg to a channel flow
 
 ******
 オープンソースの preCICE/OpenFOAM/CaliculiX での流体構造連成シミュレーション
 ******
 
-DEXCS2020アドバンス版の上で動作確認をしています。
-DEXCS2020アドバンス版のダウンロードの情報は以下のサイトを見てください。
+DEXCS2020アドバンス版で動作確認をしています。
+DEXCS2020アドバンス版ダウンロードについて情報は以下のサイトを見てください。
 https://sites.google.com/view/dexcs-of
 
 フラップ部はシェル要素を使っています。
@@ -14,7 +14,7 @@ https://sites.google.com/view/dexcs-of
 
 
 ********
-Fluid StructureInteraction Simulation with  preCICE/OpenFOAM/CaliculiX(Opensoure)
+Fluid StructureInteraction Simulation with preCICE/OpenFOAM/CaliculiX(Opensoure)
 ********
 
 Operation has been confirmed with DEXCS2020 advanced version.
@@ -35,3 +35,8 @@ p194-197
 7.5.3 Wirbelerregte flexible Struktur
 
 https://elib.uni-stuttgart.de/handle/11682/144
+
+
+## Disclaimer
+
+This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAMR and OpenCFDR trade marks
