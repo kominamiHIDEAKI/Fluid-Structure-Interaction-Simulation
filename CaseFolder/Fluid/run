@@ -1,0 +1,3 @@
+#!/bin/bash
+. $TreeFoamUserPath/app/bashrc-FOAM-DEXCS
+pimpleFoam | tee solve.log

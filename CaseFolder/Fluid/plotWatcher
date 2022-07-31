@@ -1,0 +1,6 @@
+#!/bin/bash
+. $TreeFoamUserPath/app/bashrc-FOAM-DEXCS
+echo 
+echo -n "running plotWatcher
+"
+python3 $pyFoamDir/bin/pyFoamPlotWatcher.py /home/dexcs/Desktop/FSI/Book/Book_orig/Fluid/solve.log > /dev/null

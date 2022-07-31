@@ -1,0 +1,95 @@
+#!/bin/bash
+#For the shell elements
+
+# ---- variables -----
+# shell size
+valu x0 0.0
+valu z0 5.5e-3
+valu x1 40.0e-3
+Valu z1 -5.5e-3
+
+# mesh size
+#-- valu LE 1.0e-3
+valu ndx 42
+valu ndz  1
+
+# element type --- set ty3u to S3 / set qu4 to S4
+#---- valu Etyp tr3u
+valu Etyp qu4
+# ---- variables(end) -----
+
+# preprocessing
+# geometry
+# ---- マニュアルでは、pnt <name> x y z となっている
+# しかしバグか、メッシュ表示をすると　座標値の順序は　x z y になっている？（CalculiX Version 2.15） 
+# メッシュファイルでの　ノードの座標値の設定では、x y z の順になっている。よってコマンドはマニュアル通りで良い。
+pnt p1 x0 0.0 z0
+pnt p2 x1 0.0 z0
+pnt p3 x1 0.0 z1
+pnt p4 x0 0.0 z1
+
+#-- pnt p1 x0 z0 0.0
+#-- pnt p2 x1 z0 0.0
+#-- pnt p3 x1 z1 0.0
+#-- pnt p4 x0 z1 0.0
+
+line l1 p1 p2
+line l2 p2 p3
+line l3 p3 p4
+line l4 p4 p1
+
+# plot lp all
+
+surf surf1 l1 l2 l3 l4
+
+# meshing
+#-- div all auto LE
+
+#--- うまくできない ----
+#   seta length l l1 l3
+#   seta width  l l2 l4
+#   div length auto ndx
+#   div width  auto ndz
+#--- うまくできない(end) ----
+
+div l1 ndx
+div l3 ndx
+div l2 ndz
+div l4 ndz
+
+
+elty all Etyp
+mesh all
+send all abq
+
+# export point p1-p4
+seta p01 p p1
+seta p02 p p2
+seta p03 p p3
+seta p04 p p4
+
+send p01 abq nam
+send p02 abq nam
+send p03 abq nam
+send p04 abq nam
+
+# export the nodes in l1-l4
+seta l01 l l1
+seta l01 p p1 p2
+seta l02 l l2
+seta l02 p p2 p3
+seta l03 l l3
+seta l03 p p3 p4
+seta l04 l l4
+seta l04 p p4 p1
+
+send l01 abq nam
+send l02 abq nam
+send l03 abq nam
+send l04 abq nam
+
+# export the nodes in surface
+seta surface n all
+send surface abq nam
+
+

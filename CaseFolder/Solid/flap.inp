@@ -1,0 +1,123 @@
+**
+** Heading +++++++++++++++++++++++++++++++++++++++++++++++++
+**
+*Heading
+Hash: NWSdm1XH, Date: 05/30/2022, Unit system: M_KG_S_C
+**
+
+*INCLUDE, INPUT=Solid/all.msh
+** Node sets +++++++++++++++++++++++++++++++++++++++++++++++
+*INCLUDE, INPUT=Solid/p01.nam
+*INCLUDE, INPUT=Solid/p02.nam
+*INCLUDE, INPUT=Solid/p03.nam
+*INCLUDE, INPUT=Solid/p04.nam
+*INCLUDE, INPUT=Solid/l01.nam
+*INCLUDE, INPUT=Solid/l02.nam
+*INCLUDE, INPUT=Solid/l03.nam
+*INCLUDE, INPUT=Solid/l04.nam
+*INCLUDE, INPUT=Solid/surface.nam
+
+**
+**
+**
+** Physical constants ++++++++++++++++++++++++++++++++++++++
+**
+**
+** Materials +++++++++++++++++++++++++++++++++++++++++++++++
+**
+*Material, Name=Mat
+*Density
+100
+*Elastic
+0.25e+06, 0.35
+*Expansion, Zero=20
+6.5E-05
+*Conductivity
+0.261
+*Specific heat
+1140
+**
+** Sections ++++++++++++++++++++++++++++++++++++++++++++++++
+**
+*Shell section, Elset=Eall, Material=Mat, Offset=0
+0.6e-3
+**
+** Pre-tension sections ++++++++++++++++++++++++++++++++++++
+**
+**
+** Constraints +++++++++++++++++++++++++++++++++++++++++++++
+**
+**
+** Surface interactions ++++++++++++++++++++++++++++++++++++
+**
+**
+** Contact pairs +++++++++++++++++++++++++++++++++++++++++++
+**
+**
+** Initial conditions ++++++++++++++++++++++++++++++++++++++
+**
+**
+** Steps +++++++++++++++++++++++++++++++++++++++++++++++++++
+**
+**
+** Step-1 ++++++++++++++++++++++++++++++++++++++++++++++++++
+**
+**---------  modify for DEXCS advance ------------
+**   *Step
+**   *Static
+
+*STEP, NLGEOM, INC=1000000
+** --- *DYNAMIC, DIRECT,EXPLICIT=3
+** --- EXPLICTが省略されている場合はEXPLICT=0のことで陰解法となる。EXPLICT=3は陽解法
+*DYNAMIC, DIRECT
+1.65E-3, 10.0
+
+**---------  modify for  DEXCS advance (end)------------
+** Boundary conditions +++++++++++++++++++++++++++++++++++++
+**
+*Boundary, op=New
+** Name: Fixed-Edge
+*Boundary
+Nl04, 1, 6, 0
+** Name: Symmetry-Edge
+*Boundary
+Nl01, 3, 3, 0
+Nl01, 4, 4, 0
+Nl01, 5, 5, 0
+Nl03, 3, 3, 0
+Nl03, 4, 4, 0
+Nl03, 5, 5, 0
+**
+** Loads +++++++++++++++++++++++++++++++++++++++++++++++++++
+**
+** Name: Surface_traction-1
+*Cload
+
+***** このinpファイルの先頭でincludeしているsurface.namに記載されている。
+Nsurface, 1, 0.0
+Nsurface, 2, 0.0
+Nsurface, 3, 0.0
+ 
+**
+**---------  動作検証が必要 ( end )------------
+** Name: Gravity-1
+*Dload
+Eall, Grav, 9.81, 0, -1, 0
+**---------  動作検証が必要 ( end )------------
+**
+** Defined fields ++++++++++++++++++++++++++++++++++++++++++
+**
+**
+** History outputs +++++++++++++++++++++++++++++++++++++++++
+**
+**
+** Field outputs +++++++++++++++++++++++++++++++++++++++++++
+**
+*NODE FILE, FREQUENCY=1
+ U, RF
+*EL FILE, FREQUENCY=1
+ S, E
+**
+** End step ++++++++++++++++++++++++++++++++++++++++++++++++
+**
+*End step
