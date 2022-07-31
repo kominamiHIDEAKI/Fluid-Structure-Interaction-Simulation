@@ -1,23 +1,37 @@
 # Tutorial for an FSI simulation of an elastic flap perpendicular to a channel flow
 
-This tutorial is described in the [preCICE wiki](https://github.com/precice/precice/wiki/Tutorial-for-FSI-with-OpenFOAM-and-CalculiX).
+******
+オープンソースの preCICE/OpenFOAM/CaliculiX での流体構造連成シミュレーション
+******
 
-It is known to work with OpenFOAM 4.1, 5.0, v1712, v1806 and CalculiX 2.13 with CGX, but it should also work with newer versions. Have a look on issues concerning [OpenFOAM 6 / dev](https://github.com/precice/openfoam-adapter/issues/21) and [OpenFOAM v1812](https://github.com/precice/openfoam-adapter/issues/59).
+DEXCS2020アドバンス版の上で動作確認をしています。
+DEXCS2020アドバンス版のダウンロードの情報は以下のサイトを見てください。
+https://sites.google.com/view/dexcs-of
 
-The case files are prepared for the latest versions of OpenFOAM and use the solver `pimpleFoam`. **In case you are using a previous OpenFOAM version** you need to adjust the solver to `pimpleDyMFoam` in the `Fluid/system/controlDict` file.
+フラップ部はシェル要素を使っています。
 
-You may run the coupled simulation in serial using the script `Allrun` or in parallel with `Allrun -parallel` (`Allrun_parallel` is a shortcut to this). The output of each step will be redirected to log files. You can cleanup the simulation using `Allclean`.
+これは下記の論文で提案された問題です。もとの論文は安定化有限要素法の研究論文でフラップ部にソリッド要素が使われています。
 
-If you prefer to run the two simulations in two different terminals and watch their output on the screen, use the (simpler) scripts `runFluid` (or `runFluid -parallel`) and `runSolid`. Please always run the script `runFluid` first.
 
-CGX is used to prepare the Solid participant and it should be executable by running `cgx`. If it has a different name (e.g. `cgx_2.13`), adapt the respective run script, or set an alias/link from `cgx` to `cgx_2.13`.
+********
+Fluid StructureInteraction Simulation with  preCICE/OpenFOAM/CaliculiX(Opensoure)
+********
 
-There is an [open issue](https://github.com/precice/openfoam-adapter/issues/26) that leads to additional "empty" result directories when running with some OpenFOAM versions, leading to inconveniences during post-processing. Please run the script `removeObsoleteSolvers.sh` to delete the additional files.
+Operation has been confirmed with DEXCS2020 advanced version.
+Please see the following site for information on downloading the DEXCS2020 Advanced version.
+https://sites.google.com/view/dexcs-of
 
-You may adjust the end time in the precice-config_*.xml, or interupt the execution earlier if you want.
+The flap part uses a shell element.
 
-This case was contributed by Derek Risseeuw (TU Delft).
+This is the problem proposed in the paper below,which is a research paper on the stabilized finite element method.The flap part uses a solid element.
 
-## Disclaimer
 
-This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAM® and OpenCFD® trade marks.
+===================
+
+Fluid?Struktur?Interaktion mit stabilisierten Finiten Elementen(1999)
+Autor(en): Wall, Wolfgang A.
+
+p194-197 
+7.5.3 Wirbelerregte flexible Struktur
+
+https://elib.uni-stuttgart.de/handle/11682/144
