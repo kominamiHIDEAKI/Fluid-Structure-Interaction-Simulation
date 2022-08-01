@@ -1,4 +1,0 @@
-#!/bin/bash
-mono /opt/preCICE/calculix-adapter-2.15_preCICE2.x/tools/frdConverter/frdToVTKConverter.exe ./Solid/flap.frd
-/opt/OpenFOAM/ThirdParty-v2006/platforms/linux64Gcc/ParaView-5.6.3/bin/paraview --data='Solid/flap_mmh_..vtk'
-
