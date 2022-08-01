@@ -5,7 +5,7 @@
 ******
 
 DEXCS2020アドバンス版で動作確認をしています。
-DEXCS2020アドバンス版ダウンロードについて情報は以下のサイトを見てください。
+DEXCS2020アドバンス版のダウンロードについて情報は以下のサイトを見てください。
 https://sites.google.com/view/dexcs-of
 
 フラップ部はシェル要素を使っています。
@@ -57,3 +57,4 @@ This case was contributed by Hideaki Kominami.
 ## Disclaimer
 
 This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAMR and OpenCFDR trade marks
+

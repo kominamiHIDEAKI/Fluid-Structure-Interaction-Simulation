@@ -70,7 +70,7 @@ Hash: NWSdm1XH, Date: 05/30/2022, Unit system: M_KG_S_C
 ** --- *DYNAMIC, DIRECT,EXPLICIT=3
 ** --- EXPLICTが省略されている場合はEXPLICT=0のことで陰解法となる。EXPLICT=3は陽解法
 *DYNAMIC, DIRECT
-1.65E-3, 10.0
+1.65E-3, 10.00065
 
 **---------  modify for  DEXCS advance (end)------------
 ** Boundary conditions +++++++++++++++++++++++++++++++++++++
@@ -101,8 +101,8 @@ Nsurface, 3, 0.0
 **
 **---------  動作検証が必要 ( end )------------
 ** Name: Gravity-1
-*Dload
-Eall, Grav, 9.81, 0, -1, 0
+**--   *Dload
+**--   Eall, Grav, 9.81, 0, -1, 0
 **---------  動作検証が必要 ( end )------------
 **
 ** Defined fields ++++++++++++++++++++++++++++++++++++++++++

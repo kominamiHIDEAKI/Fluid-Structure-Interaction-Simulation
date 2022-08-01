@@ -17,26 +17,6 @@ solver      displacementLaplacian;
 
 displacementLaplacianCoeffs {
 
-//    diffusivity quadratic inverseDistance (flap);//-a
-//    diffusivity inverseDistance (flap);//-b
-//    diffusivity inverseFaceDistance (flap);// -c FlowTime=0.0528 s で停止(メッシュの歪が大きい：上のabの２つよりまし)
-//    diffusivity inversePointDistance (flap);// -d FlowTime=0.0515 s で停止(メッシュの歪が大きい：上のabの２つよりまし)
-//    diffusivity inverseVolume;// -e  FlowTime=0.03630 s で停止(メッシュの歪が大きい)
-//    diffusivity exponential 10 inverseDistance (flap);//FlowTime=0.03135 s で停止(メッシュの歪が大きい)
-//    diffusivity exponential 1 inverseDistance (flap);//FlowTime=0.03300 s で停止(メッシュの歪が大きい)
-//     diffusivity exponential 0.1 inverseDistance (flap);///FlowTime=0.02970 s で停止 (メッシュの歪が大きい)  
-//    diffusivity exponential 50 inverseDistance (flap);///FlowTime=0.03960 s で停止 (メッシュの歪が大きい)     
-
-// もとの例題と同じブロック分割ではだめな模様
-
-// -------------------
-// 併用できるか？　→　FlowTime=0.03630 s で停止
-// 併用できるが、悪いほうで停止する。
-//    diffusivity inverseFaceDistance (flap);
-//    diffusivity inverseVolume;
-// --------------------    
-    
-    diffusivity     uniform;///FlowTime=0.02970 s で停止 (メッシュの歪が大きい)  
-    
+   diffusivity inverseFaceDistance (flap);
     
 }
